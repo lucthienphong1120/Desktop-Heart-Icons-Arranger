@@ -1,12 +1,16 @@
 # ❤️ Desktop Heart Icons Arranger
 Một chương trình Python thú vị giúp tự động sắp xếp các icon trên màn hình Desktop Windows của bạn thành hình trái tim với hiệu ứng chuyển động mượt mà (smooth animation).
 
+Phiên bản hoàn thiện nhất của chương trình xếp icon Desktop hình trái tim. Bản cập nhật này tập trung vào trải nghiệm thị giác với thuật toán phân bố đều khoảng cách và hiệu ứng xoay vòng mượt mà.
+
 <img width="720" height="540" alt="{2E618B7A-CA58-4632-86E5-96F8A0537053}" src="https://github.com/user-attachments/assets/7c689142-eba4-435a-8d00-472885fca26e" />
 
 ## ✨ Tính năng nổi bật
 + Hình dáng chuẩn: Sử dụng công thức toán học Parametric Heart Equation để tạo hình trái tim cân đối.
-+ Hiệu ứng mượt mà (Smooth Animation): Icon sẽ trượt từ vị trí cũ sang vị trí mới thay vì "nhảy" tức thời, tạo cảm giác như có bàn tay vô hình đang sắp xếp.
++ Phân bổ đều (Anti-Clustering): Các icon giờ đây được chia đều khoảng cách dọc theo đường viền, không còn bị dồn cục xấu xí ở phần đỉnh và đáy trái tim.
++ Hiệu ứng trượt (Smooth Slide): Icon lướt nhẹ nhàng từ vị trí cũ sang vị trí mới thay vì "nhảy" tức thời, tạo cảm giác như có bàn tay vô hình đang sắp xếp.
 + Tương thích cao: Hoạt động tốt trên Windows 10 và Windows 11 nhờ thuật toán tìm kiếm cửa sổ SysListView32 thông minh.
++ Chế độ Xoay vòng (Rotation Loop): Sau khi xếp xong, các icon sẽ tự động chạy đuổi nhau theo hình trái tim như băng chuyền vô tận.
 + Tùy biến: Dễ dàng điều chỉnh tốc độ bay, độ to nhỏ của trái tim ngay trong code.
 
 ## 🛠️ Yêu cầu hệ thống
@@ -37,7 +41,7 @@ Trước khi chạy, bạn BẮT BUỘC phải tắt chế độ tự động s�
 + Click chuột phải vào màn hình Desktop (khoảng trống).
 + Chọn View.
 + Bỏ chọn (Uncheck) dòng Auto arrange icons.
-+ Bỏ chọn (Uncheck) dòng Align icons to grid (để hình trái tim mượt hơn, không bị gãy khúc theo lưới).
++ Bỏ chọn (Uncheck) dòng Align icons to grid (để icon di chuyển mượt mà nhất).
 
 ### Bước 2: Chạy chương trình
 
@@ -53,9 +57,16 @@ Sau khi chạy, hãy ngồi thư giãn và xem các icon tự động bay về v
 Bạn có thể mở file `heart_icons.py` bằng bất kỳ trình soạn thảo văn bản nào để chỉnh sửa các thông số ở phần đầu file:
 
 ```
-ANIMATION_SPEED = 0.01 # Tốc độ trượt (càng nhỏ càng nhanh)
-STEPS = 15             # Số bước chia nhỏ quãng đường (càng lớn càng mượt nhưng chậm hơn)
-SCALE_BASE = 15        # Độ to của trái tim (tăng giảm tùy số lượng icon)
+# 1. Cấu hình hiệu ứng xếp hình (Giai đoạn 1)
+ANIMATION_SPEED = 0.01       # Tốc độ trượt (càng nhỏ càng nhanh)
+STEPS = 30                   # Số bước di chuyển (càng lớn càng mượt nhưng chậm)
+SCALE_BASE = 25              # Độ to của trái tim
+
+# 2. Cấu hình xoay vòng (Giai đoạn 2)
+ENABLE_ROTATION = True       # Bật/Tắt chế độ xoay vòng sau khi xếp xong
+ROTATION_SPEED = 0.005       # Tốc độ xoay (đã chỉnh lại cho phù hợp với logic mới - 0.001 đến 0.01)
+REFRESH_RATE = 0.05          # Thời gian nghỉ giữa các khung hình khi xoay (giây)
+PAUSE_BEFORE_ROTATION = 1.0  # Thời gian nghỉ trước khi bắt đầu xoay (giây)
 ```
 
 ## ❓ Khắc phục lỗi thường gặp
